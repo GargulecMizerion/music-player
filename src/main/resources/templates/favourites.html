@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify API App - favorite</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<a th:href="@{/}">
+    <h1>Spotify API App</h1>
+</a>
+<h2>Music</h2>
+<form th:action="@{/}" th:method="get">
+    <input type="text" name="term">
+    <input type="submit" value="Search for music">
+</form>
+
+<div class="row">
+    <div class="col col-12">
+        <table class="table table-striped table-dark">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Artist</th>
+                <th scope="col">Title</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="result : ${favourites}">
+                    <td th:text="${result.getTrackId()}"></td>
+                    <td th:text="${result.getArtistName()}"></td>
+                    <td th:text="${result.getTrackName()}"></td>
+                    <td><a th:href="${result.getTrackUrl()}"><button type="button" class="btn btn-info">Show Details</button></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col">
+        <h2 class="text-center" style="margin: 15px">
+
+        </h2>
+        <table class="table text-center">
+            <thead class="thead-light">
+
+            </thead>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</body>
+</html>
